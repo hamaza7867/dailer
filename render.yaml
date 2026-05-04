@@ -35,11 +35,18 @@ services:
           name: cyphex-redis
           property: connectionString
 
-  # Redis Service
-  - type: redis
-    name: cyphex-redis
+# Redis Instance
+redis:
+  - name: cyphex-redis
     plan: starter
+    ipAllowList:
+      - source: internal # This allows internal Render services to connect
 
+# Database Instance
 databases:
   - name: cyphex-db
     plan: starter
+    accessControl:
+      allowedServices:
+        - name: cyphex-dialer
+        - name: cyphex-dialer-worker

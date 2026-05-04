@@ -35,14 +35,12 @@ services:
           name: cyphex-redis
           property: connectionString
 
-  # Redis (Now defined as a service of type keyvalue)
+  # Redis (Key Value Service)
   - type: keyvalue
     name: cyphex-redis
     plan: starter
-    ipAllowList:
-      - source: 0.0.0.0/0 # Allows internal connection
 
 # Database
 databases:
   - name: cyphex-db
-    plan: starter
+    plan: basic-256mb

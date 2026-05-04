@@ -1,5 +1,5 @@
 services:
-  # Web Service
+  # Web Service (Django)
   - type: web
     name: cyphex-dialer
     env: docker
@@ -18,7 +18,7 @@ services:
       - key: SECRET_KEY
         generateValue: true
 
-  # Worker Service
+  # Worker Service (Celery)
   - type: worker
     name: cyphex-dialer-worker
     env: docker
@@ -35,14 +35,14 @@ services:
           name: cyphex-redis
           property: connectionString
 
-# Redis Instance
+# Redis
 redis:
   - name: cyphex-redis
     plan: starter
     ipAllowList:
-      - source: internal # This allows internal Render services to connect
+      - source: internal
 
-# Database Instance
+# Database
 databases:
   - name: cyphex-db
     plan: starter
